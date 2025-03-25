@@ -44,7 +44,7 @@ try {
     return res.status(400).send({msg:"Invalid password"})
   }
   const token = await jwt.sign({id : data._id} , process.env.SECRET_KEY , {expiresIn : "30d"}) 
-  res.send({token : token})
+  res.status(200).send({token : token})
 } catch (error) {
   res.status(400).send({msg:"Invalid credentials"})
 }

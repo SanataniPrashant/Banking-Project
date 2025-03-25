@@ -18,14 +18,27 @@ function LR() {
     console.log(password);
     let api = `${BASE_URL}/customer/login`
     try {
-      let res = await axios.post(api , {email : email , password : password})
+
+      const res = await axios.post(api , {email : email , password : password});
+
       localStorage.setItem("token" , res.data.token)
-      toast.success("login successfully")
+      alert("Login successful");
       navigate("/layout")
+      
     } catch (error) {
-      // toast.error(error.response.data.msg)
-      toast.error(error.message); 
-      console.log(error)
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        toast.error(error.response.data.msg);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        toast.error("No response received from server");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error("Error setting up request");
+      }
     }
   }
 
@@ -55,8 +68,9 @@ function LR() {
             navigate("/register")
           }}>Register</button>
         </form>
+        <ToastContainer />
       </div>
-      <ToastContainer />
+      
     </>
   )
 }

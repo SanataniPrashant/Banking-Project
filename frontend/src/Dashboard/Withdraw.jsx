@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import BASE_URL from '../Config/config';
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Withdraw = () => {
   const[amount  ,setAmount] = useState("")
   const[transactiontype  ,settransactiontype] = useState("")
@@ -14,7 +15,7 @@ const handleSubmit = async(e)=>{
        let api = `${BASE_URL}/customer/transaction`;
        const res =await axios.post(api , {amount : amount ,transactiontype:transactiontype,transactionfor:transactionfor, status : "Debited" ,customerid : customerid })
        console.log(res.data)
-       alert("Data Debited Successfully")
+       toast.success("Ammount Debited Successfully")
        
 }
   return (
@@ -60,6 +61,8 @@ const handleSubmit = async(e)=>{
         </Col>
       </Row>
     </Container>
+      <ToastContainer />
+    
     </>
   )
 }

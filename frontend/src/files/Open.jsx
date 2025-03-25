@@ -35,7 +35,7 @@ const submitHandler = async(e)=>{
     return;
   }
   if (input.pan && input.pan.length !== 10) {
-    toast.error("Invalid Aadhar Number. Please enter 12 digits.");
+    toast.error("Invalid pan Number. Please enter 10 digits.");
     return;
   }
     let api = `${BASE_URL}/customer/open`
@@ -56,7 +56,8 @@ const submitHandler = async(e)=>{
     toast.success(response.data.msg);
    navigate('/layout/login')
   } catch (error) {
-    toast.error(error.message); 
+    toast.error(error.response.data.msg); 
+    console.log(error.response.data.msg);
   }
 }
 

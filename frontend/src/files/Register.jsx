@@ -24,7 +24,7 @@ function Register() {
   try {
   
     const res = await axios.post(api , input)
-    toast.success("successfully registered")
+    alert("successfully registered")
     navigate('/lr')
   } catch (error) {
     // toast.error(error.res.data.msg) 

@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import BASE_URL from '../Config/config';
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddMoney = () => {
+
   const[amount  ,setAmount] = useState("")
   const[transactiontype  ,settransactiontype] = useState("")
   const[transactionfor  ,settransactionfor] = useState("")
@@ -12,9 +16,10 @@ const handleSubmit = async(e)=>{
        let api = `${BASE_URL}/customer/transaction`
        const res =await axios.post(api , {amount : amount ,transactiontype:transactiontype, transactionfor:transactionfor, status : "credited" ,customerid : customerid })
        console.log(res.data)
-       alert("Amount credited successfully")
+       toast.success("Amount credited successfully")
 }
   return (
+    <>
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6} lg={4}>
@@ -57,6 +62,9 @@ const handleSubmit = async(e)=>{
         </Col>
       </Row>
     </Container>
+    <ToastContainer />
+    </>
+    
   );
 };
 
