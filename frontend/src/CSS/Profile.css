@@ -1,0 +1,30 @@
+.profile-container {
+  max-width:400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  margin-bottom: 20px;
+}
+
+.profile-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.profile-value {
+  font-size: 18px;
+  color: #666;
+}
